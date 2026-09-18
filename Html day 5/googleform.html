@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Request</title>
+<style>
+  :root{
+    --purple: #673ab7;
+    --purple-dark: #5b2fad;
+    --border: #dadce0;
+    --text: #202124;
+    --muted: #5f6368;
+    --card-bg: #ffffff;
+    --page-bg: #f0ebf8;
+    --required: #d93025;
+    --link: #1a73e8;
+  }
+ 
+  *{ box-sizing: border-box; }
+ 
+  body{
+    margin: 0;
+    padding: 32px 16px 60px;
+    background: var(--page-bg);
+    font-family: "Google Sans", Roboto, Arial, sans-serif;
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+  }
+ 
+  form{
+    width: 100%;
+    max-width: 640px;
+  }
+ 
+  .card{
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+ 
+  /* Header card */
+  .header-card{
+    border-top: 10px solid var(--purple);
+  }
+ 
+  .header-inner{
+    padding: 24px 24px 16px;
+  }
+ 
+  .header-inner h1{
+    margin: 0 0 8px;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+  }
+ 
+  .header-inner p{
+    margin: 0;
+    font-size: 14px;
+    color: var(--text);
+  }
+ 
+  .account-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 14px;
+  }
+ 
+  .account-left{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+ 
+  .account-chip{
+    background: #202124;
+    color: #fff;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+ 
+  .account-row a{
+    color: var(--link);
+    text-decoration: none;
+    font-size: 13px;
+  }
+  .account-row a:hover{ text-decoration: underline; }
+ 
+  .cloud-icon{
+    width: 20px;
+    height: 20px;
+    color: var(--muted);
+  }
+ 
+  .required-note{
+    padding: 12px 24px;
+    font-size: 13px;
+    color: var(--required);
+  }
+ 
+  /* Question cards */
+  .question-card{
+    padding: 22px 24px 26px;
+  }
+ 
+  .q-label{
+    font-size: 15px;
+    margin-bottom: 14px;
+    display: block;
+  }
+ 
+  .q-label .req{
+    color: var(--required);
+    margin-left: 2px;
+  }
+ 
+  .text-input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    padding: 4px 0 8px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--text);
+    background: transparent;
+    outline: none;
+  }
+ 
+  .text-input::placeholder{
+    color: #80868b;
+  }
+ 
+  .text-input:focus{
+    border-bottom: 2px solid var(--purple);
+    padding-bottom: 7px;
+  }
+ 
+  /* Radio options */
+  .option-row{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 0;
+  }
+ 
+  .option-row input[type="radio"]{
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--muted);
+    border-radius: 50%;
+    margin: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+    position: relative;
+  }
+ 
+  .option-row input[type="radio"]:checked{
+    border-color: var(--purple);
+  }
+ 
+  .option-row input[type="radio"]:checked::after{
+    content: "";
+    position: absolute;
+    inset: 3px;
+    background: var(--purple);
+    border-radius: 50%;
+  }
+ 
+  .option-row label{
+    font-size: 14px;
+    cursor: pointer;
+  }
+ 
+  .option-row.other-row{
+    gap: 12px;
+  }
+ 
+  .other-input{
+    flex: 1;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    padding: 2px 0 6px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    background: transparent;
+  }
+  .other-input:focus{
+    border-bottom: 2px solid var(--purple);
+  }
+ 
+  /* Date fields */
+  .date-hint{
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+ 
+  .date-input{
+    border: none;
+    border-bottom: 1px solid var(--border);
+    padding: 4px 0 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: transparent;
+    outline: none;
+    color: var(--text);
+    width: 180px;
+  }
+  .date-input:focus{
+    border-bottom: 2px solid var(--purple);
+    padding-bottom: 7px;
+  }
+ 
+  /* Footer */
+  .form-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+ 
+  .submit-btn{
+    background: var(--purple);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+  }
+ 
+  .submit-btn:hover{
+    background: var(--purple-dark);
+  }
+ 
+  .clear-btn{
+    background: none;
+    border: none;
+    color: var(--link);
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 10px 8px;
+  }
+  .clear-btn:hover{
+    text-decoration: underline;
+  }
+ 
+  @media (max-width: 480px){
+    .header-inner h1{ font-size: 22px; }
+    .date-input{ width: 100%; }
+  }
+</style>
+</head>
+<body>
+ 
+<form>
+ 
+  <div class="card header-card">
+    <div class="header-inner">
+      <h1>Travel Request</h1>
+      <p>Submit travel request for approval by manager</p>
+    </div>
+    <div class="account-row">
+      <div class="account-left">
+        <span class="account-chip">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <a href="#">Switch account</a>
+      </div>
+      <svg class="cloud-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M17.5 19H6.5a4.5 4.5 0 0 1-.5-8.97A5.5 5.5 0 0 1 16.5 8h.5a4 4 0 0 1 0 8"/>
+      </svg>
+    </div>
+    <div class="required-note">* Indicates required question</div>
+  </div>
+ 
+  <div class="card question-card">
+    <label class="q-label" for="email">Email<span class="req">*</span></label>
+    <input class="text-input" type="email" id="email" name="email" placeholder="Your email" required>
+  </div>
+ 
+  <div class="card question-card">
+    <label class="q-label" for="name">Name<span class="req">*</span></label>
+    <input class="text-input" type="text" id="name" name="name" placeholder="Your answer" required>
+  </div>
+ 
+  <div class="card question-card">
+    <label class="q-label" for="destination">Destination<span class="req">*</span></label>
+    <input class="text-input" type="text" id="destination" name="destination" placeholder="Your answer" required>
+  </div>
+ 
+  <div class="card question-card">
+    <span class="q-label">Business purpose<span class="req">*</span></span>
+ 
+    <div class="option-row">
+      <input type="radio" id="purpose-1" name="purpose" value="Customer meeting" required>
+      <label for="purpose-1">Customer meeting</label>
+    </div>
+    <div class="option-row">
+      <input type="radio" id="purpose-2" name="purpose" value="Working with team">
+      <label for="purpose-2">Working with team</label>
+    </div>
+    <div class="option-row">
+      <input type="radio" id="purpose-3" name="purpose" value="Attending conference">
+      <label for="purpose-3">Attending conference</label>
+    </div>
+    <div class="option-row">
+      <input type="radio" id="purpose-4" name="purpose" value="Offsite fun event">
+      <label for="purpose-4">Offsite fun event</label>
+    </div>
+    <div class="option-row other-row">
+      <input type="radio" id="purpose-5" name="purpose" value="Other">
+      <label for="purpose-5">Other:</label>
+      <input type="text" class="other-input" name="purpose-other" aria-label="Other business purpose">
+    </div>
+  </div>
+ 
+  <div class="card question-card">
+    <label class="q-label" for="start-date">Start date<span class="req">*</span></label>
+    <div class="date-hint">Date</div>
+    <input class="date-input" type="date" id="start-date" name="start-date" required>
+  </div>
+ 
+  <div class="card question-card">
+    <label class="q-label" for="end-date">End date<span class="req">*</span></label>
+    <div class="date-hint">Date</div>
+    <input class="date-input" type="date" id="end-date" name="end-date" required>
+  </div>
+ 
+  <div class="form-footer">
+    <button type="submit" class="submit-btn">Submit</button>
+    <button type="reset" class="clear-btn">Clear form</button>
+  </div>
+ 
+</form>
+ 
+</body>
+</html>
+ 
