@@ -1,0 +1,23 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+}
+.container{
+    height:1600px;
+    width:1600px;
+    display: flex;
+    margin:100vx;
+    padding: 100vx;
+    background-color:rgb(4, 253, 4);
+    
+
+}
+.a{
+    margin:100px;
+    height:190px;
+    width:190px;
+    padding:100px;
+    background-color:red;
+
+}
