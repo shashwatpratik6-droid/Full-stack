@@ -1,0 +1,25 @@
+*{
+    padding:0px;
+    margin:0px;
+    box-sizing:border-box;
+
+}
+#parent{
+    background-color:blue;
+    display:flex;
+    padding:10px;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    flex-direction: column;
+
+
+}
+#child{
+    margin:20px;
+    padding:20px;
+    background-color:aqua;
+    border: solid black;
+    display:flex;
+    border-radius:10px;
+
+}
