@@ -1,0 +1,32 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.Outer-card{
+    display:flex;
+    border:2px solid black;
+    padding:24px;
+    border-radius:16px;
+    justify-content:space-between;
+}
+main{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+#register{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:50px;
+
+}
+.div{
+    padding:20px;
+}
+#button{
+    display:flex;
+    justify-content: end;
+}
