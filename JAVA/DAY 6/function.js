@@ -78,3 +78,13 @@
 // console.log(sumOfSquareAndCube(y))
 
 
+let num = prompt("Enter an integer")
+function isPositive(num){
+    if(num>=0){
+        return Math.sqrt(num)
+    }
+    else{
+        return Math.sqrt(Math.abs(num))
+    }
+}
+console.log(isPositive(num))
