@@ -10,6 +10,10 @@ function add(a, b) {
     console.log("inside add function")
 return a + b;
 }
+function subtract(a, b) {
+    console.log("inside subtract function")
+return a - b;
+}
 function multiply(a, b) {
 console.log("Inside multiply function")
 return a * b;
@@ -20,3 +24,4 @@ return operation(a, b);
 }
 console.log(calculate(4, 5, add));
 console.log(calculate(4, 5, multiply));
+console.log(calculate(4, 5, subtract));
